@@ -7,13 +7,17 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.qa.opencart.utils.ElementUtil;
+
 public class LoginPage {
 
 	private WebDriver driver; // default value == Null
+	private ElementUtil eleUtil;
 
 	// 1. Constructor of the page class
 	public LoginPage(WebDriver driver) {
 		this.driver = driver;
+		eleUtil = new ElementUtil(this.driver);
 	}
 
 	// 2. private By locators:   
@@ -26,18 +30,16 @@ public class LoginPage {
 
 	// 3. page actions/methods:
 	public String getLoginPageTitle() {
-		String title = driver.getTitle();
-		System.out.println("login page title :" + title);
-		return title;
+		return eleUtil.waitForTitleIsAndCapture("Account Login", 5);
 	}
 
 	public boolean isForgotPwdLinkExists() {
-		return driver.findElement(forgotPwdLink).isDisplayed();
+		return eleUtil.checkElementIsDisplayed(forgotPwdLink);
 	}
 
 	public List<String> getFooterLinksList() {
 
-		List<WebElement> footerLinksList = driver.findElements(footerLinks);
+		List<WebElement> footerLinksList = eleUtil.waitForElementsVisible(footerLinks, 10);
 		List<String> footerTextList = new ArrayList<String>();
 		for (WebElement e : footerLinksList) {
 			String text = e.getText();
@@ -48,9 +50,13 @@ public class LoginPage {
 	}
 	
 	public AccountsPage doLogin(String userName, String pwd) {
-		driver.findElement(emailid).sendKeys(userName);
-		driver.findElement(password).sendKeys(pwd);
-		driver.findElement(loginBtn).click();
+		eleUtil.waitForElementVisible(emailid, 10).sendKeys(userName);
+		eleUtil.doSendKeys(password, pwd);
+		eleUtil.doClick(loginBtn);
+		
+		//driver.findElement(emailid).sendKeys(userName);
+		//driver.findElement(password).sendKeys(pwd);
+		//driver.findElement(loginBtn).click();
 		//return next landing page -> page chaning model
 		return new AccountsPage(driver);
 	}

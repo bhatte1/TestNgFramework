@@ -7,12 +7,16 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.qa.opencart.utils.ElementUtil;
+
 public class AccountsPage {
 	private WebDriver driver; // default value == Null
+	private ElementUtil eleUtil;
 
 	// 1. Constructor of the page class
 	public AccountsPage(WebDriver driver) {
 		this.driver = driver;
+		eleUtil = new ElementUtil(this.driver);
 	}
 	
 	private By logout = By.linkText("Logout");
@@ -23,21 +27,19 @@ public class AccountsPage {
 	
 	
 	public String getAccPageTitle() {
-		String title = driver.getTitle();
-		System.out.println("Acc page title is: "+ title);
-		return title;
+		return eleUtil.waitForTitleIsAndCapture("My Account", 5);
 	}
 	
 	public boolean isLogoutLinkExist() {
-		return driver.findElement(logout).isDisplayed();
+		return eleUtil.checkElementIsDisplayed(logout);
 	}
 	
 	public boolean isAccountLinkExist() {
-		return driver.findElement(myAccount).isDisplayed();
+		return eleUtil.checkElementIsDisplayed(myAccount);
 	}
 	
 	public List<String> getAccountPageHeadersList() {
-		List<WebElement> accPageheaders =	driver.findElements(AccountPageHeaders);
+		List<WebElement> accPageheaders =	eleUtil.waitForElementsVisible(AccountPageHeaders, 10) ;
 		List<String> accPageHeaderList =  new ArrayList<String>();
 		
 		for(WebElement e:accPageheaders ) {
@@ -47,8 +49,11 @@ public class AccountsPage {
 	}
 	
 	public SearchPage doSearch(String searchTerm) {
-		driver.findElement(searh).sendKeys(searchTerm);  //MAcbook
-		driver.findElement(searhIcon).click();	
+		
+		eleUtil.waitForElementVisible(searh, 10).sendKeys(searchTerm);
+		eleUtil.doClick(searhIcon);
+//		driver.findElement(searh).sendKeys(searchTerm);  //MAcbook
+//		driver.findElement(searhIcon).click();	
 		return new SearchPage(driver);    //Test Driven approach
 	}
 
