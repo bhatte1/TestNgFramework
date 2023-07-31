@@ -28,6 +28,13 @@ public class LoginPageTest extends BaseTest{
 	
 	}
 	
+	@Test
+	public void loginTest() {
+		accountsPage = loginPage.doLogin(prop.getProperty("username"), prop.getProperty("password"));
+		Assert.assertTrue(accountsPage.isLogoutLinkExist());
+		Assert.assertTrue(accountsPage.getAccPageTitle().equals("My Account"));
+	}
+	
 
 
 }
