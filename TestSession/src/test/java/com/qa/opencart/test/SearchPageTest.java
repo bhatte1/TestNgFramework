@@ -12,8 +12,8 @@ public class SearchPageTest extends BaseTest {
 	@BeforeTest
 	public void searchPageSetup() {
 		//login in to the lab and then search
-		accountsPage = loginPage.doLogin("vinayakbhatte7@gmail.com", "vinayakbhatte");
-		searchPage = accountsPage.doSearch("Macbook");
+		accountsPage = loginPage.doLogin(prop.getProperty("username"), prop.getProperty("password"));
+		searchPage = accountsPage.doSearch(prop.getProperty("search"));
 	}
 	
 	@Test
