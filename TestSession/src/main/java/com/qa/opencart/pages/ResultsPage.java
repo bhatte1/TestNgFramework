@@ -16,12 +16,31 @@ public class ResultsPage {
 	}
 	
 	
-	private By macbookAir = By.linkText("MacBook Air");
+	private By macbookPro = By.linkText("MacBook Pro");
+	private By resultsProduct = By.cssSelector("div.product-layout.product-grid");
 	
+	
+	public String getResultsPageTitle(String searchKey) {
+		return eleUtil.waitForTitleIsAndCapture(searchKey, 5);
+		
+	}
 	
 	public boolean isMacBookAirVisible() {	
 		
-		return eleUtil.checkElementIsDisplayed(macbookAir);		
+		return eleUtil.checkElementIsDisplayed(macbookPro);		
+	}
+	
+	public int getProductResultsCount() {
+		int resultCount = eleUtil.waitForElementsVisible(resultsProduct, 10).size();
+		System.out.println("Result Count "+ resultCount);
+		return resultCount;
+		
+	}
+	
+	public ProductInfoPage selectProduct(String productName) {
+		By productNameLocator = By.linkText(productName);
+		eleUtil.doClick(productNameLocator);
+		return new ProductInfoPage(driver);
 	}
 	
 
