@@ -2,28 +2,28 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-07-31T12:01:36 EDT" name="Default suite" finished-at="2023-07-31T12:01:43 EDT" duration-ms="7317">
+  <suite started-at="2023-07-31T18:25:35 EDT" name="Default suite" finished-at="2023-07-31T18:25:42 EDT" duration-ms="7037">
     <groups>
     </groups>
-    <test started-at="2023-07-31T12:01:36 EDT" name="Default test" finished-at="2023-07-31T12:01:43 EDT" duration-ms="7317">
-      <class name="com.qa.opencart.test.SearchPageTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.qa.opencart.test.SearchPageTest@5c6648b0]" started-at="2023-07-31T12:01:36 EDT" name="setup" finished-at="2023-07-31T12:01:41 EDT" duration-ms="5327" status="PASS">
+    <test started-at="2023-07-31T18:25:35 EDT" name="Default test" finished-at="2023-07-31T18:25:42 EDT" duration-ms="7037">
+      <class name="com.qa.opencart.test.ResultsPageTest">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.qa.opencart.test.ResultsPageTest@5c6648b0]" started-at="2023-07-31T18:25:35 EDT" name="setup" finished-at="2023-07-31T18:25:41 EDT" duration-ms="5113" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method is-config="true" signature="searchPageSetup()[pri:0, instance:com.qa.opencart.test.SearchPageTest@5c6648b0]" started-at="2023-07-31T12:01:41 EDT" name="searchPageSetup" finished-at="2023-07-31T12:01:43 EDT" duration-ms="1714" status="PASS">
+        <test-method is-config="true" signature="searchPageSetup()[pri:0, instance:com.qa.opencart.test.ResultsPageTest@5c6648b0]" started-at="2023-07-31T18:25:41 EDT" name="searchPageSetup" finished-at="2023-07-31T18:25:42 EDT" duration-ms="1665" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- searchPageSetup -->
-        <test-method signature="isMacBookAirDisplyed()[pri:0, instance:com.qa.opencart.test.SearchPageTest@5c6648b0]" started-at="2023-07-31T12:01:43 EDT" name="isMacBookAirDisplyed" finished-at="2023-07-31T12:01:43 EDT" duration-ms="41" status="PASS">
+        <test-method signature="isMacBookAirDisplyed()[pri:0, instance:com.qa.opencart.test.ResultsPageTest@5c6648b0]" started-at="2023-07-31T18:25:42 EDT" name="isMacBookAirDisplyed" finished-at="2023-07-31T18:25:42 EDT" duration-ms="36" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- isMacBookAirDisplyed -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.qa.opencart.test.SearchPageTest@5c6648b0]" started-at="2023-07-31T12:01:43 EDT" name="tearDown" finished-at="2023-07-31T12:01:43 EDT" duration-ms="187" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.qa.opencart.test.ResultsPageTest@5c6648b0]" started-at="2023-07-31T18:25:42 EDT" name="tearDown" finished-at="2023-07-31T18:25:42 EDT" duration-ms="190" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- com.qa.opencart.test.SearchPageTest -->
+      </class> <!-- com.qa.opencart.test.ResultsPageTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

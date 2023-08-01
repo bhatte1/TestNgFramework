@@ -1,5 +1,7 @@
 package com.qa.opencart.base;
 
+
+
 import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
@@ -11,14 +13,14 @@ import com.qa.opencart.factory.DriverFactory;
 import com.qa.opencart.pages.AccountsPage;
 import com.qa.opencart.pages.LoginPage;
 import com.qa.opencart.pages.ResultsPage;
-import com.qa.opencart.pages.SearchPage;
+
 
 public class BaseTest {
 
 	WebDriver driver;
 	protected LoginPage loginPage;
 	protected AccountsPage accountsPage;
-	protected SearchPage searchPage;
+	
 	
 	protected DriverFactory df;
 	protected Properties prop;

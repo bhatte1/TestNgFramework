@@ -48,13 +48,13 @@ public class AccountsPage {
 		return accPageHeaderList;
 	}
 	
-	public SearchPage doSearch(String searchTerm) {
+	public ResultsPage doSearch(String searchTerm) {
 		
 		eleUtil.waitForElementVisible(searh, 10).sendKeys(searchTerm);
 		eleUtil.doClick(searhIcon);
 //		driver.findElement(searh).sendKeys(searchTerm);  //MAcbook
 //		driver.findElement(searhIcon).click();	
-		return new SearchPage(driver);    //Test Driven approach
+		return new ResultsPage(driver);    //Test Driven approach
 	}
 
 }

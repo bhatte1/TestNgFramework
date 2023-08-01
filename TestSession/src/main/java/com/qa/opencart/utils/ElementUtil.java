@@ -21,6 +21,9 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.qa.opencart.frameworkexception.FrameException;
+
+
 public class ElementUtil {
 
 	private WebDriver driver;
@@ -34,7 +37,7 @@ public class ElementUtil {
 	public void doSendKeys(By locator, String value) {
 		if (value == null) {
 			System.out.println("null vlaues are not allowed");
-			//throw new MySeleniumException("VALUECANNOTBENULL");
+			throw new FrameException("VALUECANNOTBENULL");
 		}
 
 		WebElement ele = getElement(locator);
