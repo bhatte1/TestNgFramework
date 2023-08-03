@@ -3,6 +3,7 @@ package com.qa.opencart.test;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.qa.opencart.base.BaseTest;
@@ -19,11 +20,30 @@ public class ResultsPageTest extends BaseTest {
 		
 	}
 	
-	@Test(priority =1)
-	public void serchProductResultCountTest() {
-		resultsPage = accountsPage.doSearch(prop.getProperty("search"));
+	/**
+	 * Data Provider
+	 * @return Product Names
+	 */
+	@DataProvider
+	public Object[][] getProductNameData() {
+		return new Object[][] {{"Macbook"},{"iMac"},{"Samsung"}};
+	}
+	
+	
+	@Test(dataProvider="getProductNameData")
+	public void serchProductResultCountTest(String searchKey) {
+		resultsPage = accountsPage.doSearch(searchKey);
+		
 		Assert.assertTrue(resultsPage.getProductResultsCount()>0);
 		}
+	
+	
+	
+//	@Test(priority =1)
+//	public void serchProductResultCountTest() {
+//		resultsPage = accountsPage.doSearch(prop.getProperty("search"));
+//		Assert.assertTrue(resultsPage.getProductResultsCount()>0);
+//		}
 	
 	@Test(priority =2)
 	public void isMacBookAirDisplyed() {

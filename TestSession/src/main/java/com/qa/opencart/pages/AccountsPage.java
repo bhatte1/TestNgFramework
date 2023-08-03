@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.qa.opencart.utils.AppConstants;
 import com.qa.opencart.utils.ElementUtil;
 
 public class AccountsPage {
@@ -27,7 +28,7 @@ public class AccountsPage {
 	
 	
 	public String getAccPageTitle() {
-		return eleUtil.waitForTitleIsAndCapture("My Account", 5);
+		return eleUtil.waitForTitleIsAndCapture(AppConstants.ACCOUNTS_PAGE_TITLE_VALUE, AppConstants.SHORT_DEFAULT_WAIT);
 	}
 	
 	public boolean isLogoutLinkExist() {
@@ -39,7 +40,7 @@ public class AccountsPage {
 	}
 	
 	public List<String> getAccountPageHeadersList() {
-		List<WebElement> accPageheaders =	eleUtil.waitForElementsVisible(AccountPageHeaders, 10) ;
+		List<WebElement> accPageheaders =	eleUtil.waitForElementsVisible(AccountPageHeaders, AppConstants.MEDIUM_DEFAULT_WAIT) ;
 		List<String> accPageHeaderList =  new ArrayList<String>();
 		
 		for(WebElement e:accPageheaders ) {
@@ -50,8 +51,9 @@ public class AccountsPage {
 	
 	public ResultsPage doSearch(String searchTerm) {
 		
-		eleUtil.waitForElementVisible(searh, 10).sendKeys(searchTerm);
+		eleUtil.waitForElementVisible(searh, AppConstants.MEDIUM_DEFAULT_WAIT).sendKeys(searchTerm);
 		eleUtil.doClick(searhIcon);
+		eleUtil.doClear(searh);
 //		driver.findElement(searh).sendKeys(searchTerm);  //MAcbook
 //		driver.findElement(searhIcon).click();	
 		return new ResultsPage(driver);    //Test Driven approach

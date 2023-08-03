@@ -14,6 +14,7 @@ import org.testng.annotations.Test;
 import com.qa.opencart.base.BaseTest;
 import com.qa.opencart.pages.AccountsPage;
 import com.qa.opencart.pages.LoginPage;
+import com.qa.opencart.utils.AppConstants;
 
 public class AccountsPageTest extends BaseTest {
 	
@@ -28,7 +29,7 @@ public class AccountsPageTest extends BaseTest {
 	@Test
 	public void accPageTitleTest() {
 		String accTitle = accountsPage.getAccPageTitle();
-		Assert.assertEquals(accTitle,"My Account");
+		Assert.assertEquals(accTitle,AppConstants.ACCOUNTS_PAGE_TITLE_VALUE);
 	}
 	
 	@Test
@@ -39,8 +40,7 @@ public class AccountsPageTest extends BaseTest {
 	@Test
 	public void accPageHeaderList() {
 		List<String> actHeaderList = accountsPage.getAccountPageHeadersList();
-		List<String> expAccHeaderList = Arrays.asList("My Account","My Orders", "My Affiliate Account", "Newsletter");
-		Assert.assertEquals(actHeaderList , expAccHeaderList);
+		Assert.assertEquals(actHeaderList , AppConstants.EXP_ACCOUNT_HEADERLIST);
 	}
 	
 

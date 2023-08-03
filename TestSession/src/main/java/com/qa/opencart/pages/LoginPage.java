@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.qa.opencart.utils.AppConstants;
 import com.qa.opencart.utils.ElementUtil;
 
 public class LoginPage {
@@ -30,7 +31,7 @@ public class LoginPage {
 
 	// 3. page actions/methods:
 	public String getLoginPageTitle() {
-		return eleUtil.waitForTitleIsAndCapture("Account Login", 5);
+		return eleUtil.waitForTitleIsAndCapture(AppConstants.LOGIN_PAGE_TITLE_VALUE, AppConstants.SHORT_DEFAULT_WAIT);
 	}
 
 	public boolean isForgotPwdLinkExists() {
@@ -39,7 +40,7 @@ public class LoginPage {
 
 	public List<String> getFooterLinksList() {
 
-		List<WebElement> footerLinksList = eleUtil.waitForElementsVisible(footerLinks, 10);
+		List<WebElement> footerLinksList = eleUtil.waitForElementsVisible(footerLinks, AppConstants.MEDIUM_DEFAULT_WAIT);
 		List<String> footerTextList = new ArrayList<String>();
 		for (WebElement e : footerLinksList) {
 			String text = e.getText();
@@ -50,7 +51,7 @@ public class LoginPage {
 	}
 	
 	public AccountsPage doLogin(String userName, String pwd) {
-		eleUtil.waitForElementVisible(emailid, 10).sendKeys(userName);
+		eleUtil.waitForElementVisible(emailid, AppConstants.MEDIUM_DEFAULT_WAIT).sendKeys(userName);
 		eleUtil.doSendKeys(password, pwd);
 		eleUtil.doClick(loginBtn);
 		

@@ -57,6 +57,13 @@ public class ElementUtil {
 		return waitForElementVisible(locator, timeOut);
 	}
 
+	
+	
+	/**
+	 * Wrapper method example
+	 * @param locator
+	 * @return WebElement
+	 */
 	public WebElement getElement(By locator) {
 		WebElement element = null;
 		try {
