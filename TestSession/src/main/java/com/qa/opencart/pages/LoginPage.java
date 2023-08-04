@@ -28,6 +28,8 @@ public class LoginPage {
 	private By loginBtn = By.xpath("//input[@value='Login']");
 	private By forgotPwdLink = By.linkText("Forgotten Password");
 	private By footerLinks = By.xpath("//footer//a");
+	private By loginErrorMessg = By.cssSelector("div.alert.alert-danger.alert-dismissible");
+
 
 	// 3. page actions/methods:
 	public String getLoginPageTitle() {
@@ -60,6 +62,26 @@ public class LoginPage {
 		//driver.findElement(loginBtn).click();
 		//return next landing page -> page chaning model
 		return new AccountsPage(driver);
+	}
+
+	/**
+	 * login with wrong username {0} and password {1}
+	 * @param userName test class returns username
+	 * @param pwd test class returns password
+	 * @return
+	 */
+	public boolean doLoginWithWrongCredentials(String userName, String pwd) {
+		System.out.println("wrong creds are : " + userName + ":" + pwd);
+		eleUtil.waitForElementVisible(emailid, AppConstants.MEDIUM_DEFAULT_WAIT);
+		eleUtil.doSendKeys(emailid, userName);
+		eleUtil.doSendKeys(password, pwd);
+		eleUtil.doClick(loginBtn);
+		String errorMessg = eleUtil.doGetElementText(loginErrorMessg);
+		System.out.println(errorMessg);
+		if (errorMessg.contains(AppConstants.LOGIN_ERROR_MESSAGE)) {
+			return true;
+		}
+		return false;
 	}
 
 }

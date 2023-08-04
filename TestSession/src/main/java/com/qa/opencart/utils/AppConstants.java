@@ -14,6 +14,7 @@ public class AppConstants {
 	
 	public static final List<String> EXP_ACCOUNT_HEADERLIST = 
 			Arrays.asList("My Account","My Orders", "My Affiliate Account", "Newsletter");
+	public static final String LOGIN_ERROR_MESSAGE = "Warning: No match for E-Mail Address and/or Password.";
 	
 
 }
