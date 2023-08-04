@@ -25,12 +25,12 @@ public class ResultsPageTest extends BaseTest {
 	 * @return Product Names
 	 */
 	@DataProvider
-	public Object[][] getProductNameData() {
+	public Object[][] getProductSearchKeyData() {
 		return new Object[][] {{"Macbook"},{"iMac"},{"Samsung"}};
 	}
 	
 	
-	@Test(dataProvider="getProductNameData")
+	@Test(dataProvider="getProductSearchKeyData")  //Data Driven Approach
 	public void serchProductResultCountTest(String searchKey) {
 		resultsPage = accountsPage.doSearch(searchKey);
 		
@@ -51,6 +51,7 @@ public class ResultsPageTest extends BaseTest {
 		Assert.assertTrue(resultsPage.isMacBookAirVisible());
 		
 	}
+	
 	
 	@Test(priority =3)
 	public void selectProductTest() {
