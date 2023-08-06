@@ -7,7 +7,7 @@
         <methods>
           <include name="setup"/>
           <include name="resultsPageSetup"/>
-          <include name="serchProductResultCountTest" invocation-numbers="1 2"/>
+          <include name="bselectProductTest" invocation-numbers="0 1"/>
           <include name="tearDown"/>
         </methods>
       </class> <!-- com.qa.opencart.test.ResultsPageTest -->

@@ -51,6 +51,7 @@ public class AccountsPage {
 	
 	public ResultsPage doSearch(String searchTerm) {
 		
+		eleUtil.doClear(searh);
 		eleUtil.waitForElementVisible(searh, AppConstants.MEDIUM_DEFAULT_WAIT).sendKeys(searchTerm);
 		eleUtil.doClick(searhIcon);
 		eleUtil.doClear(searh);

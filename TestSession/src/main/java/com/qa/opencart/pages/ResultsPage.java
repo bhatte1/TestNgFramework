@@ -18,7 +18,7 @@ public class ResultsPage {
 	
 	private By macbookPro = By.linkText("MacBook Pro");
 	private By resultsProduct = By.cssSelector("div.product-layout.product-grid");
-	
+	private By searh = By.name("search");
 	
 	public String getResultsPageTitle(String searchKey) {
 		return eleUtil.waitForTitleIsAndCapture(searchKey, 5);
@@ -40,6 +40,7 @@ public class ResultsPage {
 	public ProductInfoPage selectProduct(String productName) {
 		By productNameLocator = By.linkText(productName);
 		eleUtil.doClick(productNameLocator);
+		eleUtil.doClear(searh);
 		return new ProductInfoPage(driver);
 	}
 	

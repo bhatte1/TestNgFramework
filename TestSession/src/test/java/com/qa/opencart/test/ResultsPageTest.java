@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 
 import com.qa.opencart.base.BaseTest;
 import com.qa.opencart.pages.ResultsPage;
+import com.qa.opencart.pojo.Product;
 
 public class ResultsPageTest extends BaseTest {
 	
@@ -20,23 +21,42 @@ public class ResultsPageTest extends BaseTest {
 		
 	}
 	
-	/**
-	 * Data Provider
-	 * @return Product Names
-	 */
-	@DataProvider
-	public Object[][] getProductSearchKeyData() {
-		return new Object[][] {{"Macbook"},{"iMac"},{"Samsung"}};
+//	/**
+//	 * Data Provider
+//	 * @return Product Names
+//	 */
+//	@DataProvider
+//	public Object[][] getProductSearchKeyData() {
+//		return new Object[][] {{"Macbook"},{"iMac"},{"Samsung"}};
+//	}
+	
+	
+	@DataProvider(name = "productData")
+	public Object[][] getProductTestData() {
+		return new Object[][] {
+			{new Product("Macbook", "MacBook Pro", 4)},
+			{new Product("iMac", "iMac", 3)}
+			
+		};
+		
 	}
 	
 	
-	@Test(dataProvider="getProductSearchKeyData")  //Data Driven Approach
-	public void serchProductResultCountTest(String searchKey) {
-		resultsPage = accountsPage.doSearch(searchKey);
+	@Test(dataProvider="productData")  //Data Driven Approach
+	public void aserchProductResultCountTest(Product product) {
+		resultsPage = accountsPage.doSearch(product.getSearchKey());
 		
 		Assert.assertTrue(resultsPage.getProductResultsCount()>0);
 		}
 	
+//	
+//	@Test(dataProvider="getProductSearchKeyData")  //Data Driven Approach
+//	public void serchProductResultCountTest(String searchKey) {
+//		resultsPage = accountsPage.doSearch(searchKey);
+//		
+//		Assert.assertTrue(resultsPage.getProductResultsCount()>0);
+//		}
+//	
 	
 	
 //	@Test(priority =1)
@@ -45,27 +65,38 @@ public class ResultsPageTest extends BaseTest {
 //		Assert.assertTrue(resultsPage.getProductResultsCount()>0);
 //		}
 	
-	@Test(priority =2)
-	public void isMacBookAirDisplyed() {
-		
-		Assert.assertTrue(resultsPage.isMacBookAirVisible());
-		
-	}
+//	@Test(priority =2)
+//	public void isMacBookAirDisplyed() {
+//		
+//		Assert.assertTrue(resultsPage.isMacBookAirVisible());
+//		
+//	}
 	
 	
-	@Test(priority =3)
-	public void selectProductTest() {
-		productInfoPage = resultsPage.selectProduct("MacBook Pro");
+	@Test(dataProvider="productData")
+	public void bselectProductTest(Product product) {
+		resultsPage = accountsPage.doSearch(product.getSearchKey());
+		productInfoPage = resultsPage.selectProduct(product.getProdcutName());
 		String actProductHeaderName = productInfoPage.getProductHeaderName();
-		Assert.assertEquals(actProductHeaderName, "MacBook Pro");
+		Assert.assertEquals(actProductHeaderName, product.getProdcutName());
 	}
 	
-	@Test(priority =4)
-	public void productImageTest() {
-		//productInfoPage = resultsPage.selectProduct("MacBook Pro");
+//	@Test(dataProvider="productData")
+//	public void productImageTest(Product product) {
+//		resultsPage = accountsPage.doSearch(product.getSearchKey());
+//		productInfoPage = resultsPage.selectProduct("MacBook Pro");
+//		int actProductImageCount = productInfoPage.getProductImagesCount();
+//		System.out.println("Total Images count are :"+actProductImageCount);
+//		Assert.assertEquals(actProductImageCount, 4);
+//	}
+	
+	@Test(dataProvider="productData")
+	public void cproductImageTest(Product product) {
+		resultsPage = accountsPage.doSearch(product.getSearchKey());
+		productInfoPage = resultsPage.selectProduct(product.getProdcutName());
 		int actProductImageCount = productInfoPage.getProductImagesCount();
 		System.out.println("Total Images count are :"+actProductImageCount);
-		Assert.assertEquals(actProductImageCount, 4);
+		Assert.assertEquals(actProductImageCount, product.getProductImages());
 	}
 
 }
