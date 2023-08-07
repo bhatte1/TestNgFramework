@@ -7,6 +7,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.qa.opencart.base.BaseTest;
+import com.qa.opencart.dataproviders.ProductDataProvider;
 import com.qa.opencart.pages.ResultsPage;
 import com.qa.opencart.pojo.Product;
 
@@ -31,18 +32,18 @@ public class ResultsPageTest extends BaseTest {
 //	}
 	
 	
-	@DataProvider(name = "productData")
-	public Object[][] getProductTestData() {
-		return new Object[][] {
-			{new Product("Macbook", "MacBook Pro", 4)},
-			{new Product("iMac", "iMac", 3)}
-			
-		};
-		
-	}
+//	@DataProvider(name = "productData")
+//	public Object[][] getProductTestData() {
+//		return new Object[][] {
+//			{new Product("Macbook", "MacBook Pro", 4)},
+//			{new Product("iMac", "iMac", 3)}
+//			
+//		};
+//		
+//	}
 	
 	
-	@Test(dataProvider="productData")  //Data Driven Approach
+	@Test(dataProvider="productData", dataProviderClass = ProductDataProvider.class)  //Data Driven Approach
 	public void aserchProductResultCountTest(Product product) {
 		resultsPage = accountsPage.doSearch(product.getSearchKey());
 		
@@ -73,7 +74,7 @@ public class ResultsPageTest extends BaseTest {
 //	}
 	
 	
-	@Test(dataProvider="productData")
+	@Test(dataProvider="productData", dataProviderClass = ProductDataProvider.class)
 	public void bselectProductTest(Product product) {
 		resultsPage = accountsPage.doSearch(product.getSearchKey());
 		productInfoPage = resultsPage.selectProduct(product.getProdcutName());
@@ -90,7 +91,7 @@ public class ResultsPageTest extends BaseTest {
 //		Assert.assertEquals(actProductImageCount, 4);
 //	}
 	
-	@Test(dataProvider="productData")
+	@Test(dataProvider="productData", dataProviderClass = ProductDataProvider.class)
 	public void cproductImageTest(Product product) {
 		resultsPage = accountsPage.doSearch(product.getSearchKey());
 		productInfoPage = resultsPage.selectProduct(product.getProdcutName());

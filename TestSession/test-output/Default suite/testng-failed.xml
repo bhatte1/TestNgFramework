@@ -7,8 +7,9 @@
         <methods>
           <include name="setup"/>
           <include name="resultsPageSetup"/>
-          <include name="bselectProductTest" invocation-numbers="0 1"/>
+          <include name="bselectProductTest"/>
           <include name="tearDown"/>
+          <include name="cproductImageTest"/>
         </methods>
       </class> <!-- com.qa.opencart.test.ResultsPageTest -->
     </classes>
