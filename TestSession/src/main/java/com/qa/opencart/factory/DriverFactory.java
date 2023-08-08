@@ -15,19 +15,21 @@ import com.qa.opencart.frameworkexception.FrameException;
 public class DriverFactory {
 
 	WebDriver driver;
+	OptionsManager om;
 
 	public WebDriver initDriver(Properties prop) // call by reference
 	{
 		String bowserName = prop.getProperty("browser").trim();
-
 		System.out.println("Browser name is : " + bowserName);
+		
+		OptionsManager om = new OptionsManager(prop);
 
 		switch (bowserName.toLowerCase()) {
 		case "chrome":
-			driver = new ChromeDriver();
+			driver = new ChromeDriver(om.getChromeOptions());
 			break;
 		case "edge":
-			driver = new EdgeDriver();
+			driver = new EdgeDriver(om.getEdgeOptions());
 			break;
 		case "firefox":
 			driver = new FirefoxDriver();
