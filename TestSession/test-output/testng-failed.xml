@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite thread-count="2" parallel="tests" name="Failed suite [DraasUIFlows]" guice-stage="DEVELOPMENT" verbose="4">
-  <test thread-count="2" name="Accounts Page Test(failed)" verbose="4">
-    <parameter name="browser" value="firefox"/>
+<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.qa.opencart.test.AccountsPageTest">
+      <class name="com.qa.opencart.test.LoginPageTest">
         <methods>
-          <include name="isLogoutLinkExistTest"/>
-          <include name="accPageHeaderList"/>
+          <include name="loginPageTitleTest"/>
           <include name="setup"/>
-          <include name="accPageTitleTest"/>
-          <include name="accPageSetup"/>
+          <include name="loginTest"/>
+          <include name="forgotPasswordLinkExistText"/>
           <include name="tearDown"/>
         </methods>
-      </class> <!-- com.qa.opencart.test.AccountsPageTest -->
+      </class> <!-- com.qa.opencart.test.LoginPageTest -->
     </classes>
-  </test> <!-- Accounts Page Test(failed) -->
-</suite> <!-- Failed suite [DraasUIFlows] -->
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->
